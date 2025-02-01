@@ -81,7 +81,48 @@ python3 -m consumers.json_consumer_case
 What did we name the topic used with JSON data? 
 Hint: See the consumer code and [.env](.env).
 
-## Task 7. Start a CSV Producer
+## Task7. Start a Custom JSON Producer
+
+In VS Code, open a terminal.
+Use the commands below to activate .venv, and start the producer. 
+
+Windows:
+
+```shell
+.venv\Scripts\activate
+py -m producers.json_producer_uma
+```
+
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m producers.json_producer_uma
+```
+
+What did we name the topic used with JSON data? 
+Hint: See the producer code and [.env](.env).
+
+## Task 8. Start a  Custom JSON Consumer
+
+Consumers process streaming data in real time.
+
+In VS Code, open a NEW terminal in your root project folder. 
+Use the commands below to activate .venv, and start the consumer. 
+
+Windows:
+```shell
+.venv\Scripts\activate
+py -m consumers.json_consumer_uma
+```
+as
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m consumers.json_consumer_uma
+```
+
+
+## Task 9. Start a CSV Producer
 
 Follow a similar process to start the csv producer. 
 You will need to:
@@ -94,7 +135,7 @@ You will need to:
 What did we name the topic used with csv data? 
 Hint: See the producer code and [.env](.env).
 
-## Task 8. Start a CSV Consumer
+## Task 10. Start a CSV Consumer
 
 Follow a similar process to start the csv consumer. 
 You will need to:
@@ -106,6 +147,47 @@ You will need to:
 
 What did we name the topic used with csv data? 
 Hint: See the consumer code and [.env](.env).
+
+## Task11. Start a Custom CSV Producer
+
+In VS Code, open a terminal.
+Use the commands below to activate .venv, and start the producer. 
+
+Windows:
+
+```shell
+.venv\Scripts\activate
+py -m producers.csv_producer_uma
+```
+
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m producers.csv_producer_uma
+```
+
+What did we name the topic used with JSON data? 
+Hint: See the producer code and [.env](.env).
+
+## Task 8. Start a  Custom CSV Consumer
+
+Consumers process streaming data in real time.
+
+In VS Code, open a NEW terminal in your root project folder. 
+Use the commands below to activate .venv, and start the consumer. 
+
+Windows:
+```shell
+.venv\Scripts\activate
+py -m consumers.csv_consumer_uma
+```
+as
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m consumers.csv_consumer_uma
+```
+
 
 ## About the Smart Smoker (CSV Example)
 
