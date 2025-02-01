@@ -133,10 +133,14 @@ def main() -> None:
 
     # Poll and process messages
     logger.info(f"Polling messages from topic '{topic}'...")
+    processed_count = 0 
     try:
         for message in consumer:
             message_str = message.value
             logger.debug(f"Received message at offset {message.offset}: {message_str}")
+            processed_count += 1
+            if processed_count % 10 == 0:  # Log every 10 messages
+             logger.info(f"Processed {processed_count} messages so far.")
             process_message(message_str)
     except KeyboardInterrupt:
         logger.warning("Consumer interrupted by user.")

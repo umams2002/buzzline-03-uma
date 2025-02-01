@@ -76,9 +76,14 @@ logger.info(f"Data file: {DATA_FILE}")
 #####################################
 # Message Generator
 #####################################
+def get_temperature_threshold() -> float:
+    """Fetch temperature threshold from environment or use default."""
+    threshold = float(os.getenv("TEMPERATURE_THRESHOLD", 30.0))  # Default threshold: 30.0
+    logger.info(f"Temperature threshold: {threshold}")
+    return threshold
 
 
-def generate_messages(file_path: pathlib.Path):
+def generate_messages(file_path: pathlib.Path, temperature_threshold: float):
     """
     Read from a csv file and yield records one by one, continuously.
 
@@ -101,11 +106,16 @@ def generate_messages(file_path: pathlib.Path):
                         logger.error(f"Missing 'temperature' column in row: {row}")
                         continue
 
+                    temperature = float(row["temperature"])
+                    if temperature < temperature_threshold:
+                        logger.debug(f"Skipping row with temperature {temperature} below threshold.")
+                        continue
+
                     # Generate a timestamp and prepare the message
                     current_timestamp = datetime.utcnow().isoformat()
                     message = {
                         "timestamp": current_timestamp,
-                        "temperature": float(row["temperature"]),
+                        "temperature": temperature,
                     }
                     logger.debug(f"Generated message: {message}")
                     yield message
@@ -138,6 +148,8 @@ def main():
     topic = get_kafka_topic()
     interval_secs = get_message_interval()
 
+    temperature_threshold = get_temperature_threshold()
+
     # Verify the data file exists
     if not DATA_FILE.exists():
         logger.error(f"Data file not found: {DATA_FILE}. Exiting.")
@@ -162,7 +174,7 @@ def main():
     # Generate and send messages
     logger.info(f"Starting message production to topic '{topic}'...")
     try:
-        for csv_message in generate_messages(DATA_FILE):
+        for csv_message in generate_messages(DATA_FILE, temperature_threshold):
             producer.send(topic, value=csv_message)
             logger.info(f"Sent message to topic '{topic}': {csv_message}")
             time.sleep(interval_secs)
