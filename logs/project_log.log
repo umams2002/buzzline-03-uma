@@ -12724,3 +12724,7 @@ e'}
 2025-02-01 11:55:10.901 | INFO     | __main__:generate_messages:95 - Opening data file in read mode: C:\Users\A2645055\source\repos\44671\buzzline-03-uma\data\buzz.json
 2025-02-01 11:55:10.904 | INFO     | __main__:generate_messages:97 - Reading data from file: C:\Users\A2645055\source\repos\44671\buzzline-03-uma\data\buzz.json
 2025-02-01 11:55:10.906 | INFO     | __main__:main:170 - Sent message to topic 'buzzline_json': {'message': 'Data engineering is my passion.', 'author': 'Eve'}
+2025-02-01 11:59:08.642 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-02-01 11:59:08.642 | INFO     | producers.json_producer_uma:<module>:68 - Project root: C:\Users\A2645055\source\repos\44671\buzzline-03-uma
+2025-02-01 11:59:08.642 | INFO     | producers.json_producer_uma:<module>:72 - Data folder: C:\Users\A2645055\source\repos\44671\buzzline-03-uma\data
+2025-02-01 11:59:08.642 | INFO     | producers.json_producer_uma:<module>:76 - Data file: C:\Users\A2645055\source\repos\44671\buzzline-03-uma\data\buzz.json
